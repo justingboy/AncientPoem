@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg5"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="48.0dip"
+        android:background="@drawable/button_bg" >
+
+        <ImageButton
+            android:id="@+id/btn_toggle"
+            android:layout_width="50.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="6.0dip"
+            android:background="@drawable/btn_button"
+            android:src="@drawable/nav_icon_side" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="古诗词鉴赏"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="#ffffffff" />
+
+        <Button
+            android:id="@+id/btn_recommend"
+            android:layout_width="wrap_content"
+            android:layout_height="60.0dip"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="4.0dip"
+            android:layout_marginTop="4.0dip"
+            android:background="@drawable/btn_button"
+            android:gravity="center"
+            android:text="精品推荐"
+            android:textColor="#ffffffff" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/poemCatelog"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_margin="8.0dip"
+        android:layout_weight="1.0"
+        android:background="@drawable/item_bg"
+        android:cacheColorHint="#00000000"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="true" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2.0dip"
+        android:layout_marginLeft="8.0dip"
+        android:layout_marginRight="8.0dip" >
+
+        <Button
+            android:id="@+id/btn_showAll"
+            android:layout_width="0.0dip"
+            android:layout_height="44.0dip"
+            android:layout_marginRight="3.0dip"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_button"
+            android:text="显示全部"
+            android:textColor="#ffffffff" />
+
+        <Button
+            android:id="@+id/btn_showByAuthor"
+            android:layout_width="0.0dip"
+            android:layout_height="44.0dip"
+            android:layout_marginLeft="3.0dip"
+            android:layout_weight="1.0"
+            android:background="@drawable/btn_button"
+            android:text="按作者查找"
+            android:textColor="#ffffffff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@id/adLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="45.0dip"
+        android:background="@drawable/main_bg"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:visibility="gone" />
+
+</LinearLayout>

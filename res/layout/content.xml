@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+     android:background="@drawable/bg5"
+    >
+
+    <include layout="@layout/consum_title" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_margin="8.0dip"
+        android:layout_weight="1.0"
+        android:background="@drawable/item_bg2" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/tv_title"
+                style="@style/black_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5.0dip"
+                android:text="标题" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1.0px"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:background="#ff666666" />
+
+            <TextView
+                android:id="@+id/tv_author"
+                style="@style/black_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5.0dip"
+                android:text="作者" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="1.0px"
+                android:layout_marginLeft="5.0dip"
+                android:layout_marginRight="5.0dip"
+                android:background="#ff666666" />
+
+            <TextView
+                android:id="@+id/tv_desc"
+                style="@style/black_normal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_margin="5.0dip"
+                android:lineSpacingMultiplier="1.3"
+                android:text="注解" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

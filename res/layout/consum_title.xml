@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="48.0dip" >
+
+    <RelativeLayout
+     
+        android:id="@+id/browsinghistory_rela"
+        android:layout_width="fill_parent"
+        android:layout_height="48.0dip"
+        android:background="@drawable/button_bg" >
+
+        <com.justing.poem.view.MarqueeTextView
+            android:textColor="@android:color/white"
+            android:id="@+id/title_text"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/common_title_margin"
+            android:layout_marginRight="@dimen/common_title_margin"
+            android:ellipsize="marquee"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="登录古诗词鉴赏"
+            android:textSize="20.0sp" />
+
+        <ImageView
+               android:scaleType="centerInside"
+            android:id="@+id/title_left"
+            android:layout_width="@dimen/common_title_left_img_width"
+            android:layout_height="48.0dip"
+            android:layout_alignParentLeft="true" />
+
+        
+        <ImageView
+            android:layout_marginRight="5dp"
+            android:id="@+id/title_right"
+            android:layout_width="@dimen/common_title_right_img_width"
+            android:layout_height="48.0dip"
+            android:layout_alignParentRight="true"
+            android:scaleType="centerInside" />
+        <TextView
+            android:id="@+id/tv_collect"
+            android:visibility="gone"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_alignParentRight="true"
+            android:textColor="#ff0000" 
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+1"
+            
+            />
+        
+    </RelativeLayout>
+
+</LinearLayout>

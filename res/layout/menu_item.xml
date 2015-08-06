@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#606060"
+    android:orientation="vertical" >
+
+    <include layout="@layout/consum_title" />
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp" >
+
+            <LinearLayout
+                android:id="@id/btn_qq"
+                style="@style/slidngStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5.0dip"
+                android:gravity="center_vertical"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingLeft="8.0dip" >
+
+                <ImageView
+                    android:layout_width="40.0dip"
+                    android:layout_height="40.0dip"
+                    android:src="@drawable/umeng_socialize_qq_login" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25.0dip"
+                    android:text="进入QQ"
+                    android:textColor="#ffffffff" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right" >
+
+                    <ImageView
+                        android:layout_width="25.0dip"
+                        android:layout_height="25.0dip"
+                        android:layout_gravity="right"
+                        android:src="@drawable/side_icon_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@id/btn_weibo"
+                style="@style/slidngStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center_vertical"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingLeft="8.0dip" >
+
+                <ImageView
+                    android:layout_width="40.0dip"
+                    android:layout_height="40.0dip"
+                    android:src="@drawable/umeng_socialize_sina_on" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25.0dip"
+                    android:text="进入微博"
+                    android:textColor="#ffffffff" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right" >
+
+                    <ImageView
+                        android:layout_width="25.0dip"
+                        android:layout_height="25.0dip"
+                        android:layout_gravity="right"
+                        android:src="@drawable/side_icon_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@id/btn_renre"
+                style="@style/slidngStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center_vertical"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingLeft="8.0dip" >
+
+                <ImageView
+                    android:layout_width="40.0dip"
+                    android:layout_height="40.0dip"
+                    android:src="@drawable/umeng_socialize_renren_on" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25.0dip"
+                    android:text="进入人人"
+                    android:textColor="#ffffffff" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right" >
+
+                    <ImageView
+                        android:layout_width="25.0dip"
+                        android:layout_height="25.0dip"
+                        android:src="@drawable/side_icon_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@id/btn_weixin"
+                style="@style/slidngStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center_vertical"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingLeft="8.0dip" >
+
+                <ImageView
+                    android:layout_width="40.0dip"
+                    android:layout_height="40.0dip"
+                    android:src="@drawable/weixin_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25.0dip"
+                    android:text="进入微信"
+                    android:textColor="#ffffffff" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right" >
+
+                    <ImageView
+                        android:layout_width="25.0dip"
+                        android:layout_height="25.0dip"
+                        android:src="@drawable/side_icon_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@id/btn_baidu"
+                style="@style/slidngStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center_vertical"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingLeft="8.0dip" >
+
+                <ImageView
+                    android:layout_width="40.0dip"
+                    android:layout_height="40.0dip"
+                    android:src="@drawable/icon_logo" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25.0dip"
+                    android:text="进入百度"
+                    android:textColor="#ffffffff" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right" >
+
+                    <ImageView
+                        android:layout_width="25.0dip"
+                        android:layout_height="25.0dip"
+                        android:layout_gravity="right"
+                        android:src="@drawable/side_icon_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+            
+            
+            <LinearLayout
+                android:id="@+id/btn_collection"
+                style="@style/slidngStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center_vertical"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingLeft="8.0dip" >
+
+                <ImageView
+                    android:layout_width="40.0dip"
+                    android:layout_height="40.0dip"
+                    android:src="@drawable/ic3" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25.0dip"
+                    android:text="我的收藏"
+                    android:textColor="#ffffffff" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right" >
+
+                    <ImageView
+                        android:layout_width="25.0dip"
+                        android:layout_height="25.0dip"
+                        android:layout_gravity="right"
+                        android:src="@drawable/side_icon_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+                   <LinearLayout
+                android:id="@+id/btn_updataApp"
+                style="@style/slidngStyle"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="10.0dip"
+                android:gravity="center_vertical"
+                android:onClick="onClick"
+                android:orientation="horizontal"
+                android:paddingLeft="8.0dip" >
+
+                <ImageView
+                    android:layout_width="40.0dip"
+                    android:layout_height="40.0dip"
+                    android:src="@drawable/title" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="25.0dip"
+                    android:text="版本更新"
+                    android:textColor="#ffffffff" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right" >
+
+                    <ImageView
+                        android:layout_width="25.0dip"
+                        android:layout_height="25.0dip"
+                        android:layout_gravity="right"
+                        android:src="@drawable/side_icon_arrow" />
+                </LinearLayout>
+            </LinearLayout>
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
