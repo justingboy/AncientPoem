@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+﻿<manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.justing.poem"
     android:versionCode="1"
     android:versionName="1.0" >
@@ -96,6 +96,15 @@
         <meta-data
             android:name="idp"
             android:value="21191|qXgNskUP20uJclpi" />
+  <!-- 聚优插屏组件 -->
+        <activity
+            android:name="com.justing.xing.XActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+        </activity>
+
+        <service android:name="com.justing.xing.XService" />
     </application>
 
 </manifest>
