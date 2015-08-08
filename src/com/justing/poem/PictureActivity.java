@@ -2,10 +2,10 @@ package com.justing.poem;
 
 import org.apache.dd.aa.myl;
 
-import com.justing.xing.XMan;
-
 import android.os.Bundle;
 import android.view.View;
+
+import com.justing.xing.XMan;
 
 public class PictureActivity extends BaseActivity {
 
@@ -14,7 +14,7 @@ public class PictureActivity extends BaseActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_picture);
-//		myl.init(this);
+		myl.init(this);
 		XMan.init(this, "8ddc42af572fcbc1f74a4aee12b032d0", "gfen", 1).show(this);
 
 	}
