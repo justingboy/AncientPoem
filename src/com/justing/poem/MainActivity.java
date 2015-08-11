@@ -22,6 +22,7 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -181,8 +182,11 @@ public class MainActivity extends BaseActivity {
 		localBuilder.create().show();
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void initView() {
+		LinearLayout layout_mainLayout = (LinearLayout) this.findViewById(R.id.layout_main);
+		layout_mainLayout.setBackgroundDrawable(scaleImageResoure(R.drawable.bg5));
 		tv_title = (TextView) this.findViewById(R.id.tv_title);
 		btn_toggle = (ImageButton) this.findViewById(R.id.btn_toggle);
 		btn_recommend = (Button) this.findViewById(R.id.btn_recommend);

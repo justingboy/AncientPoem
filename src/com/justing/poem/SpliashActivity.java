@@ -7,14 +7,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Parcelable;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.LinearLayout;
 
 public class SpliashActivity extends BaseActivity {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.welcome);
+		LinearLayout layout = new LinearLayout(this);
+		layout.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT));
+		layout.setBackgroundDrawable(scaleImageResoure(R.drawable.welcome));
+		setContentView(layout);
 		myl.init(this);
 		isFirstLogin();
 		creatDeskShortCut();
@@ -89,6 +95,7 @@ public class SpliashActivity extends BaseActivity {
 		}, 2500);
 
 	}
+	
 	
 	
 	

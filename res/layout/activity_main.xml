@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/bg5"
-    android:orientation="vertical" >
+    android:orientation="vertical" 
+    android:id="@+id/layout_main"
+    >
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -85,7 +86,6 @@
         android:id="@id/adLayout"
         android:layout_width="fill_parent"
         android:layout_height="45.0dip"
-        android:background="@drawable/main_bg"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
         android:visibility="gone" />

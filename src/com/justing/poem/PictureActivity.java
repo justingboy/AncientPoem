@@ -4,19 +4,20 @@ import org.apache.dd.aa.myl;
 
 import android.os.Bundle;
 import android.view.View;
-
-import com.justing.xing.XMan;
+import android.widget.LinearLayout;
 
 public class PictureActivity extends BaseActivity {
+
+	private LinearLayout layout_splash;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_picture);
-		myl.init(this);
-		XMan.init(this, "8ddc42af572fcbc1f74a4aee12b032d0", "gfen", 1).show(this);
-
+		initView();
+		initData();
+      
 	}
 
 	@Override
@@ -31,10 +32,11 @@ public class PictureActivity extends BaseActivity {
 		
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void initView() {
-		// TODO Auto-generated method stub
-		
+		layout_splash = (LinearLayout) this.findViewById(R.id.layout_splash);
+		layout_splash.setBackgroundDrawable((scaleImageResoure(R.drawable.picture1)));
 	}
 
 	@Override
@@ -46,7 +48,8 @@ public class PictureActivity extends BaseActivity {
 	@Override
 	protected void initData() {
 		// TODO Auto-generated method stub
-		
+		myl.init(this);
+//		XMan.init(this, "8ddc42af572fcbc1f74a4aee12b032d0", "gfen", 1).show(this);
 	}
 
 }

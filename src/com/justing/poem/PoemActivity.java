@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.justing.poem.bean.Poem;
@@ -85,13 +86,12 @@ public class PoemActivity extends BaseActivity implements OnClickListener {
 			finish();
 			break;
 		case R.id.title_right:
-			
-			if(PoemBusiness.getInstances().isExsit(poem.getTitle(), poemDao))
-			{
+
+			if (PoemBusiness.getInstances().isExsit(poem.getTitle(), poemDao)) {
 				ToastUtil.showShort(this, "已经收藏了！");
 				return;
 			}
-			
+
 			collectAnimation(tv_collect);
 			boolean isSucess = PoemBusiness.getInstances().insertData(poem,
 					poemDao);
@@ -107,9 +107,14 @@ public class PoemActivity extends BaseActivity implements OnClickListener {
 
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void initView() {
 		// TODO Auto-generated method stub
+		LinearLayout layout_mainLayout = (LinearLayout) this
+				.findViewById(R.id.layout_poem);
+		layout_mainLayout
+				.setBackgroundDrawable(scaleImageResoure(R.drawable.bg5));
 		this.tv_app_title = ((MarqueeTextView) findViewById(R.id.title_text));
 		tv_collect = ((TextView) findViewById(R.id.tv_collect));
 		this.tvTitle = ((TextView) findViewById(R.id.tv_title));
@@ -169,5 +174,4 @@ public class PoemActivity extends BaseActivity implements OnClickListener {
 
 	}
 
-	
 }

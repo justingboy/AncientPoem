@@ -1,13 +1,19 @@
 package com.justing.poem;
 
-import com.umeng.analytics.MobclickAgent;
+import java.io.IOException;
+import java.io.InputStream;
 
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View.OnClickListener;
+
+import com.umeng.analytics.MobclickAgent;
 
 public abstract class BaseActivity extends Activity implements OnClickListener {
 
@@ -18,7 +24,6 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 
 	}
 
-	
 	/**
 	 * 启动跳转Activity
 	 * 
@@ -36,8 +41,8 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 	/**
 	 * 启动跳转Activity
 	 * 
-	 * @param action 
-	 * @param uri 
+	 * @param action
+	 * @param uri
 	 */
 	protected void startActivity(String action, String uri) {
 		Intent intent = new Intent();
@@ -73,8 +78,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 
 	// 初始化数据
 	protected abstract void initData();
-	
-	
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
@@ -87,6 +91,33 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onPause();
 		MobclickAgent.onResume(this);
-		
+
 	}
+
+    /**
+     * 使用BitmapFactory.decodeStream 方式解析图片，减少内存消耗
+     * @param resId
+     * @return
+     */
+	protected BitmapDrawable scaleImageResoure(int resId) {
+		
+		BitmapFactory.Options opt = new BitmapFactory.Options();
+		opt.inPreferredConfig = Bitmap.Config.RGB_565;
+		opt.inPurgeable = true;
+		opt.inInputShareable = true;
+		// 获取资源图片
+		InputStream is = getResources().openRawResource(resId);
+		Bitmap bitmap = BitmapFactory.decodeStream(is, null, opt);
+		try {
+			is.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			is = null;
+		}
+
+		return new BitmapDrawable(getResources(), bitmap);
+	}
+
 }
