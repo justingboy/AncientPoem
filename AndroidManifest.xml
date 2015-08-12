@@ -27,6 +27,8 @@
     <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT" />
 
     <application
+        android:allowBackup="true"
+        android:name="com.justing.poem.PoemApplication"
         android:icon="@drawable/title"
         android:label="@string/app_name" >
         <activity
@@ -68,24 +70,8 @@
         <meta-data
             android:name="UMENG_CHANNEL"
             android:value="gfen" />
-        <!-- 豆豆 -->
-        <!-- 广播监听组件 -->
-        <receiver android:name="org.apache.dd.aa.CommonBroadcast" >
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-
-                <data android:scheme="package" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.intent.action.USER_PRESENT" />
-            </intent-filter>
-        </receiver>
-        <!-- 插屏组件 -->
+     
+        <!-- 豆豆 插屏组件 -->
         <service
             android:name="org.apache.dd.aa.mys"
             android:singleUser="true" >
@@ -99,6 +85,7 @@
         <meta-data
             android:name="idp"
             android:value="21191|qXgNskUP20uJclpi" />
+        
   <!-- 聚优插屏组件 -->
         <activity
             android:name="com.justing.xing.XActivity"

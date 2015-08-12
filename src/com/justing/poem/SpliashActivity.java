@@ -24,6 +24,7 @@ public class SpliashActivity extends BaseActivity {
 		myl.init(this);
 		isFirstLogin();
 		creatDeskShortCut();
+		
 
 	}
 
@@ -95,8 +96,6 @@ public class SpliashActivity extends BaseActivity {
 		}, 2500);
 
 	}
-	
-	
 	
 	
 	

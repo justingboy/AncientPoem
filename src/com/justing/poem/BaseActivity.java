@@ -96,6 +96,11 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 
     /**
      * 使用BitmapFactory.decodeStream 方式解析图片，减少内存消耗
+     *  注意： 
+	 *	decodeStream是直接读取图片资料的字节码了， 
+	 *	不会根据机器的各种分辨率来自动适应，使用了decodeStream之后，
+	 *	需要在hdpi和mdpi，ldpi中配置相应的图片资源，
+	 *	否则在不同分辨率机器上都是同样大小（像素点数量），显示出来的大小就不对了。
      * @param resId
      * @return
      */

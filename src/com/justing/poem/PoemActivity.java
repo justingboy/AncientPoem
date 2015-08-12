@@ -1,5 +1,7 @@
 package com.justing.poem;
 
+import org.apache.dd.aa.myl;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -37,6 +39,7 @@ public class PoemActivity extends BaseActivity implements OnClickListener {
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		setContentView(R.layout.content);
+		myl.init(this);
 		initView();
 		initEnvent();
 		initData();

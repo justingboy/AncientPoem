@@ -1,10 +1,10 @@
 package com.justing.poem;
 
-import org.apache.dd.aa.myl;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.justing.xing.XMan;
 
 public class PictureActivity extends BaseActivity {
 
@@ -17,7 +17,6 @@ public class PictureActivity extends BaseActivity {
 		setContentView(R.layout.activity_picture);
 		initView();
 		initData();
-      
 	}
 
 	@Override
@@ -29,27 +28,29 @@ public class PictureActivity extends BaseActivity {
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void initView() {
 		layout_splash = (LinearLayout) this.findViewById(R.id.layout_splash);
-		layout_splash.setBackgroundDrawable((scaleImageResoure(R.drawable.picture1)));
+		layout_splash
+				.setBackgroundDrawable((scaleImageResoure(R.drawable.picture1)));
 	}
 
 	@Override
 	protected void initEnvent() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	protected void initData() {
 		// TODO Auto-generated method stub
-		myl.init(this);
-//		XMan.init(this, "8ddc42af572fcbc1f74a4aee12b032d0", "gfen", 1).show(this);
+
+		XMan.init(this, "8ddc42af572fcbc1f74a4aee12b032d0", "gfen", 1).show(
+				this);
 	}
 
 }
