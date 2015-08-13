@@ -1,9 +1,11 @@
 package com.justing.poem;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.justing.poem.utils.SPUtils;
 import com.justing.xing.XMan;
 
 public class PictureActivity extends BaseActivity {
@@ -49,8 +51,16 @@ public class PictureActivity extends BaseActivity {
 	protected void initData() {
 		// TODO Auto-generated method stub
 
-		XMan.init(this, "8ddc42af572fcbc1f74a4aee12b032d0", "gfen", 1).show(
-				this);
+		Long  lastTime = (Long) SPUtils.get(this, "time", 0L);
+		if(lastTime == 0L)
+			SPUtils.put(this, "time", System.currentTimeMillis());
+		Long timeSpace = System.currentTimeMillis() - lastTime;
+		if(timeSpace  > 1000*60 *15)
+		{
+			XMan.init(this, "8ddc42af572fcbc1f74a4aee12b032d0", "gfen", 1).show(
+					this);
+			Log.i("msg", "---15∑÷÷”∫Û÷¥––");
+		}
 	}
 
 }
