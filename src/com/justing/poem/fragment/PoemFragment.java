@@ -53,7 +53,7 @@ public class PoemFragment extends Fragment implements OnClickListener{
 	}
 
 	/**
-	 * æ‰¾åˆ°å¸ƒå±€åŠæ§ä»¶
+	 * ÕÒµ½²¼¾Ö¼°¿Ø¼ş
 	 * 
 	 * @param inflater
 	 * @return
@@ -77,7 +77,7 @@ public class PoemFragment extends Fragment implements OnClickListener{
 
 	/**
 	 * 
-	 * ç‚¹å‡»äº‹ä»¶
+	 * µã»÷ÊÂ¼ş
 	 * 
 	 * @param v
 	 */
@@ -91,19 +91,19 @@ public class PoemFragment extends Fragment implements OnClickListener{
 			break;
 		case R.id.btn_renre:
 
-			openOtherAppActivity("äººäºº", "com.renren.mobile.android",
+			openOtherAppActivity("ÈËÈË", "com.renren.mobile.android",
 					"ui.WelcomeScreen");
 
 			break;
 		case R.id.btn_weixin:
-			openOtherAppActivity("å¾®ä¿¡", "com.tencent.mm", "ui.LauncherUI");
+			openOtherAppActivity("Î¢ĞÅ", "com.tencent.mm", "ui.LauncherUI");
 
 			break;
 		case R.id.btn_weibo:
-			openOtherAppActivity("æ–°æµªå¾®åš", "com.sina.weibo", "SplashActivity");
+			openOtherAppActivity("ĞÂÀËÎ¢²©", "com.sina.weibo", "SplashActivity");
 			break;
 		case R.id.btn_baidu:
-			ToastUtil.showShort(mActivity, "æ­£åœ¨è¿›å…¥ç™¾åº¦");
+			ToastUtil.showShort(mActivity, "ÕıÔÚ½øÈë°Ù¶È");
 			startActivity(Intent.ACTION_VIEW, "http://www.baidu.com");
 			break;
 		case R.id.btn_collection:
@@ -117,25 +117,25 @@ public class PoemFragment extends Fragment implements OnClickListener{
 	}
 
 	/**
-	 * è·³è½¬åˆ°å…¶ä»–åº”ç”¨çš„Activity
+	 * Ìø×ªµ½ÆäËûÓ¦ÓÃµÄActivity
 	 */
 	private void openOtherAppActivity(String appName, String packageName,
 			String firstActivityName) {
 		if (pm_list.contains(packageName)) {
-			ToastUtil.showShort(mActivity, "æ­£åœ¨è¿›å…¥" + appName);
+			ToastUtil.showShort(mActivity, "ÕıÔÚ½øÈë" + appName);
 			Intent inten_weibo = new Intent();
 			inten_weibo.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			inten_weibo.setComponent(new ComponentName(packageName, packageName
 					+ "." + firstActivityName));
 			startActivity(inten_weibo);
 		} else {
-			ToastUtil.showShort(mActivity, "ä½ æ²¡æœ‰å®‰è£…" + appName + "," + "å®‰è£…åé‡è¯• !");
+			ToastUtil.showShort(mActivity, "ÄãÃ»ÓĞ°²×°" + appName + "," + "°²×°ºóÖØÊÔ !");
 		}
 
 	}
 
 	/**
-	 * å¯åŠ¨è·³è½¬Activity
+	 * Æô¶¯Ìø×ªActivity
 	 * 
 	 * @param action
 	 * @param uri
@@ -148,7 +148,7 @@ public class PoemFragment extends Fragment implements OnClickListener{
 	}
 
 	/**
-	 * æ‰§è¡Œæ•°æ®åº“æŸ¥è¯¢æ“ä½œ
+	 * Ö´ĞĞÊı¾İ¿â²éÑ¯²Ù×÷
 	 * 
 	 * @author justing
 	 * 
@@ -159,7 +159,7 @@ public class PoemFragment extends Fragment implements OnClickListener{
 		protected void onPreExecute() {
 			// TODO Auto-generated method stub
 			super.onPreExecute();
-			mListener.onChangeText("æˆ‘çš„æ”¶è—");
+			mListener.onChangeText("ÎÒµÄÊÕ²Ø");
 
 		}
 
@@ -180,7 +180,7 @@ public class PoemFragment extends Fragment implements OnClickListener{
 	}
 
 	/**
-	 * è·å¾—æ‰‹æœºä¸­æ‰€æœ‰å®‰è£…çš„åº”ç”¨ç¨‹åºåŒ…å
+	 * »ñµÃÊÖ»úÖĞËùÓĞ°²×°µÄÓ¦ÓÃ³ÌĞò°üÃû
 	 */
 	private void getAppListInSystem() {
 		pm_list = new ArrayList<String>();

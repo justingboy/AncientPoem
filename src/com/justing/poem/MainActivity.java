@@ -58,19 +58,19 @@ public class MainActivity extends BaseActivity implements PoemFragment.OnTitleCh
 	}
 
 	/**
-	 * åˆå§‹åŒ–SlidingMenué…ç½®
+	 * ³õÊ¼»¯SlidingMenuÅäÖÃ
 	 */
 	private void initSlidingMenu() {
 		menu = new SlidingMenu(this);
-		// è®¾ç½®èœå•çš„ä½ç½®åœ¨å·¦è¾¹
+		// ÉèÖÃ²Ëµ¥µÄÎ»ÖÃÔÚ×ó±ß
 		menu.setMode(SlidingMenu.LEFT);
-		// è®¾ç½®èœå•çš„æ»‘åŠ¨æ ·å¼
+		// ÉèÖÃ²Ëµ¥µÄ»¬¶¯ÑùÊ½
 		menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 		menu.setShadowWidthRes(R.dimen.shadow_width);
-		// èœå•æ»‘åŠ¨æ—¶é˜´å½±éƒ¨åˆ†
+		// ²Ëµ¥»¬¶¯Ê±ÒõÓ°²¿·Ö
 		menu.setShadowDrawable(R.drawable.shadow);
 		menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-		// èœå•çš„å®½åº¦,è¦å…ˆè·å–å±å¹•çš„å®½åº¦ï¼Œå†æ¥è®¡ç®—
+		// ²Ëµ¥µÄ¿í¶È,ÒªÏÈ»ñÈ¡ÆÁÄ»µÄ¿í¶È£¬ÔÙÀ´¼ÆËã
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
@@ -79,13 +79,13 @@ public class MainActivity extends BaseActivity implements PoemFragment.OnTitleCh
 		menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
 		View slidingmenu_item = View.inflate(this, R.layout.sliding_menu_menu, null);
 		getFragmentManager().beginTransaction().replace(R.id.menu_frame, new PoemFragment()).commit();
-		// æ·»åŠ èœå•
+		// Ìí¼Ó²Ëµ¥
 		menu.setMenu(slidingmenu_item);
 	}
 
 	/**
 	 * 
-	 * ç‚¹å‡»äº‹ä»¶
+	 * µã»÷ÊÂ¼ş
 	 * 
 	 * @param v
 	 */
@@ -93,19 +93,19 @@ public class MainActivity extends BaseActivity implements PoemFragment.OnTitleCh
 		switch (v.getId()) {
 
 		case R.id.btn_showAll:
-			tv_title.setText("å¤è¯—è¯é‰´èµ");
+			tv_title.setText("¹ÅÊ«´Ê¼øÉÍ");
 			poemList = parseXmlPome.getPomeList();
 			listView.setAdapter(new PoemAdapter(this, poemList));
 
 			break;
 
 		case R.id.btn_showByAuthor:
-			tv_title.setText("å¤è¯—è¯é‰´èµ");
+			tv_title.setText("¹ÅÊ«´Ê¼øÉÍ");
 			showAuthorDialog();
 			break;
 
 		case R.id.btn_toggle:
-			// æ»‘åŠ¨çš„æ–¹æ³•,æ˜¾ç¤ºä¾§è¾¹æ 
+			// »¬¶¯µÄ·½·¨,ÏÔÊ¾²à±ßÀ¸
 			menu.toggle();
 			break;
 
@@ -119,7 +119,7 @@ public class MainActivity extends BaseActivity implements PoemFragment.OnTitleCh
 
 	}
 
-	// æŒ‰è¯—äººæ”¶ç´¢åˆ†å¸ƒ
+	// °´Ê«ÈËÊÕË÷·Ö²¼
 	protected void showAuthorDialog() {
 		this.authors = parseXmlPome.getAuthors();
 		AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
@@ -192,13 +192,13 @@ public class MainActivity extends BaseActivity implements PoemFragment.OnTitleCh
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// è¡¨ç¤ºæŒ‰è¿”å›é”®
+		// ±íÊ¾°´·µ»Ø¼ü
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			if ((System.currentTimeMillis() - firstTime) < 2000) {
 				finish();
 			} else {
 				firstTime = System.currentTimeMillis();
-				ToastUtil.showShort(this, "å†æŒ‰ä¸€æ¬¡é€€å‡ºåº”ç”¨ï¼");
+				ToastUtil.showShort(this, "ÔÙ°´Ò»´ÎÍË³öÓ¦ÓÃ£¡");
 			}
 		}
 
@@ -208,7 +208,7 @@ public class MainActivity extends BaseActivity implements PoemFragment.OnTitleCh
 
 
 	/**
-	 * è®¾ç½®ListViewå¿«é€Ÿæ»‘åŠ¨çš„å›¾ç‰‡
+	 * ÉèÖÃListView¿ìËÙ»¬¶¯µÄÍ¼Æ¬
 	 * 
 	 * @param listView
 	 * @param drawableID
