@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#606060"
     android:orientation="vertical" >
 
     <include layout="@layout/consum_title" />
@@ -18,7 +17,7 @@
             android:padding="10dp" >
 
             <LinearLayout
-                android:id="@id/btn_qq"
+                android:id="@+id/btn_qq"
                 style="@style/slidngStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
@@ -54,7 +53,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@id/btn_weibo"
+                android:id="@+id/btn_weibo"
                 style="@style/slidngStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
@@ -90,7 +89,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@id/btn_renre"
+                android:id="@+id/btn_renre"
                 style="@style/slidngStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
@@ -125,7 +124,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@id/btn_weixin"
+                android:id="@+id/btn_weixin"
                 style="@style/slidngStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"
@@ -160,7 +159,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@id/btn_baidu"
+                android:id="@+id/btn_baidu"
                 style="@style/slidngStyle"
                 android:layout_width="fill_parent"
                 android:layout_height="60dp"

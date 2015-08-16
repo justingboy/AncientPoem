@@ -1,17 +1,12 @@
 package com.justing.poem;
 
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.AlertDialog;
-import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -21,21 +16,19 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.justing.poem.adapter.PoemAdapter;
 import com.justing.poem.bean.Poem;
-import com.justing.poem.dao.PoemBusiness;
-import com.justing.poem.dao.PoemDao;
+import com.justing.poem.fragment.PoemFragment;
 import com.justing.poem.utils.ParseXmlPome;
 import com.justing.poem.utils.ToastUtil;
 import com.slidingmenu.lib.SlidingMenu;
 import com.umeng.update.UmengUpdateAgent;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements PoemFragment.OnTitleChangeListener {
 
 	private ListView listView;
 	private List<Poem> poemList;
@@ -43,11 +36,9 @@ public class MainActivity extends BaseActivity {
 	private List<String> authors;
 	private Button btn_recommend, btn_showByAuthor, btn_showAll;
 	private ImageButton btn_toggle;
-	private List<String> pm_list = null;
 	private long firstTime = 0L;
 	private SlidingMenu menu;
 	private PoemAdapter poemAdapter;
-	private PoemDao poemDao;
 	private TextView tv_title;
 
 	@Override
@@ -63,42 +54,38 @@ public class MainActivity extends BaseActivity {
 		initView();
 		initEnvent();
 		initData();
-		getAppListInSystem();
 
 	}
 
 	/**
-	 * ³õÊ¼»¯SlidingMenuÅäÖÃ
+	 * åˆå§‹åŒ–SlidingMenué…ç½®
 	 */
 	private void initSlidingMenu() {
 		menu = new SlidingMenu(this);
-		// ÉèÖÃ²Ëµ¥µÄÎ»ÖÃÔÚ×ó±ß
+		// è®¾ç½®èœå•çš„ä½ç½®åœ¨å·¦è¾¹
 		menu.setMode(SlidingMenu.LEFT);
-		// ÉèÖÃ²Ëµ¥µÄ»¬¶¯ÑùÊ½
+		// è®¾ç½®èœå•çš„æ»‘åŠ¨æ ·å¼
 		menu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 		menu.setShadowWidthRes(R.dimen.shadow_width);
-		// ²Ëµ¥»¬¶¯Ê±ÒõÓ°²¿·Ö
+		// èœå•æ»‘åŠ¨æ—¶é˜´å½±éƒ¨åˆ†
 		menu.setShadowDrawable(R.drawable.shadow);
 		menu.setBehindOffsetRes(R.dimen.slidingmenu_offset);
-		// ²Ëµ¥µÄ¿í¶È,ÒªÏÈ»ñÈ¡ÆÁÄ»µÄ¿í¶È£¬ÔÙÀ´¼ÆËã
+		// èœå•çš„å®½åº¦,è¦å…ˆè·å–å±å¹•çš„å®½åº¦ï¼Œå†æ¥è®¡ç®—
 		DisplayMetrics metrics = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
 		menu.setBehindWidth(metrics.widthPixels - 100);
 		menu.setFadeDegree(0.35f);
 		menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
-		View slidingmenu_item = View.inflate(this, R.layout.menu_item, null);
-		ImageView title_left = (ImageView) slidingmenu_item
-				.findViewById(R.id.title_left);
-		title_left.setImageResource(R.drawable.icon_bookcover_shelf_f);
-
-		// Ìí¼Ó²Ëµ¥
+		View slidingmenu_item = View.inflate(this, R.layout.sliding_menu_menu, null);
+		getFragmentManager().beginTransaction().replace(R.id.menu_frame, new PoemFragment()).commit();
+		// æ·»åŠ èœå•
 		menu.setMenu(slidingmenu_item);
 	}
 
 	/**
 	 * 
-	 * µã»÷ÊÂ¼ş
+	 * ç‚¹å‡»äº‹ä»¶
 	 * 
 	 * @param v
 	 */
@@ -106,53 +93,24 @@ public class MainActivity extends BaseActivity {
 		switch (v.getId()) {
 
 		case R.id.btn_showAll:
-			tv_title.setText("¹ÅÊ«´Ê¼øÉÍ");
+			tv_title.setText("å¤è¯—è¯é‰´èµ");
 			poemList = parseXmlPome.getPomeList();
 			listView.setAdapter(new PoemAdapter(this, poemList));
 
 			break;
 
 		case R.id.btn_showByAuthor:
-			tv_title.setText("¹ÅÊ«´Ê¼øÉÍ");
+			tv_title.setText("å¤è¯—è¯é‰´èµ");
 			showAuthorDialog();
 			break;
 
 		case R.id.btn_toggle:
-			// »¬¶¯µÄ·½·¨,ÏÔÊ¾²à±ßÀ¸
+			// æ»‘åŠ¨çš„æ–¹æ³•,æ˜¾ç¤ºä¾§è¾¹æ 
 			menu.toggle();
 			break;
 
 		case R.id.btn_recommend:
 			startActivity(this, PictureActivity.class);
-			break;
-
-		case R.id.btn_qq:
-
-			openOtherAppActivity("QQ", "com.tencent.mobileqq",
-					"activity.SplashActivity");
-			break;
-		case R.id.btn_renre:
-
-			openOtherAppActivity("ÈËÈË", "com.renren.mobile.android",
-					"ui.WelcomeScreen");
-
-			break;
-		case R.id.btn_weixin:
-			openOtherAppActivity("Î¢ĞÅ", "com.tencent.mm", "ui.LauncherUI");
-
-			break;
-		case R.id.btn_weibo:
-			openOtherAppActivity("ĞÂÀËÎ¢²©", "com.sina.weibo", "SplashActivity");
-			break;
-		case R.id.btn_baidu:
-			ToastUtil.showShort(this, "ÕıÔÚ½øÈë°Ù¶È");
-			startActivity(Intent.ACTION_VIEW, "http://www.baidu.com");
-			break;
-		case R.id.btn_collection:
-			new PoemAsyncTask().execute();
-			break;
-		case R.id.btn_updataApp:
-			UmengUpdateAgent.update(this);
 			break;
 
 		default:
@@ -161,7 +119,7 @@ public class MainActivity extends BaseActivity {
 
 	}
 
-	// °´Ê«ÈËÊÕË÷·Ö²¼
+	// æŒ‰è¯—äººæ”¶ç´¢åˆ†å¸ƒ
 	protected void showAuthorDialog() {
 		this.authors = parseXmlPome.getAuthors();
 		AlertDialog.Builder localBuilder = new AlertDialog.Builder(this);
@@ -207,7 +165,6 @@ public class MainActivity extends BaseActivity {
 
 	@Override
 	protected void initData() {
-		poemDao = new PoemDao(this);
 		parseXmlPome = new ParseXmlPome();
 		poemList = parseXmlPome.getPomeList();
 		poemAdapter = new PoemAdapter(this, poemList);
@@ -235,13 +192,13 @@ public class MainActivity extends BaseActivity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		// ±íÊ¾°´·µ»Ø¼ü
+		// è¡¨ç¤ºæŒ‰è¿”å›é”®
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
 			if ((System.currentTimeMillis() - firstTime) < 2000) {
 				finish();
 			} else {
 				firstTime = System.currentTimeMillis();
-				ToastUtil.showShort(this, "ÔÙ°´Ò»´ÎÍË³öÓ¦ÓÃ£¡");
+				ToastUtil.showShort(this, "å†æŒ‰ä¸€æ¬¡é€€å‡ºåº”ç”¨ï¼");
 			}
 		}
 
@@ -249,42 +206,9 @@ public class MainActivity extends BaseActivity {
 
 	}
 
-	/**
-	 * Ìø×ªµ½ÆäËûÓ¦ÓÃµÄActivity
-	 */
-	private void openOtherAppActivity(String appName, String packageName,
-			String firstActivityName) {
-		if (pm_list.contains(packageName)) {
-			ToastUtil.showShort(this, "ÕıÔÚ½øÈë" + appName);
-			Intent inten_weibo = new Intent();
-			inten_weibo.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			inten_weibo.setComponent(new ComponentName(packageName, packageName
-					+ "." + firstActivityName));
-			startActivity(inten_weibo);
-		} else {
-			ToastUtil.showShort(this, "ÄãÃ»ÓĞ°²×°" + appName + "," + "°²×°ºóÖØÊÔ !");
-		}
-
-	}
 
 	/**
-	 * »ñµÃÊÖ»úÖĞËùÓĞ°²×°µÄÓ¦ÓÃ³ÌĞò°üÃû
-	 */
-	private void getAppListInSystem() {
-		pm_list = new ArrayList<String>();
-		PackageManager pm = this.getPackageManager();
-		List<PackageInfo> package_list = pm
-				.getInstalledPackages(PackageManager.GET_UNINSTALLED_PACKAGES);
-		if (null != package_list && package_list.size() > 0) {
-			for (PackageInfo packageInfo : package_list) {
-				pm_list.add(packageInfo.packageName);
-			}
-
-		}
-	}
-
-	/**
-	 * ÉèÖÃListView¿ìËÙ»¬¶¯µÄÍ¼Æ¬
+	 * è®¾ç½®ListViewå¿«é€Ÿæ»‘åŠ¨çš„å›¾ç‰‡
 	 * 
 	 * @param listView
 	 * @param drawableID
@@ -308,36 +232,18 @@ public class MainActivity extends BaseActivity {
 		}
 	}
 
-	/**
-	 * Ö´ĞĞÊı¾İ¿â²éÑ¯²Ù×÷
-	 * @author justing
-	 *
-	 */
-	private class PoemAsyncTask  extends AsyncTask<Void, Void, List<Poem>>
-	{
-		
-		@Override
-		protected void onPreExecute() {
-			// TODO Auto-generated method stub
-			super.onPreExecute();
-			tv_title.setText("ÎÒµÄÊÕ²Ø");
-			
-		}
-		@Override
-		protected List<Poem> doInBackground(Void... params) {
-			// TODO Auto-generated method stub
-			
-			return PoemBusiness.getInstances().queryAllData(poemDao);
-		}
-		
-		@Override
-		protected void onPostExecute(List<Poem> result) {
-			// TODO Auto-generated method stub
-			super.onPostExecute(result);
-			poemList = result;
-			listView.setAdapter(new PoemAdapter(MainActivity.this, result));
-		}
-		
+
+	@Override
+	public void onChangeText(String title) {
+		// TODO Auto-generated method stub
+		tv_title.setText(title);
+	}
+
+	@Override
+	public void onShowCollectPoem(List<Poem> list) {
+		// TODO Auto-generated method stub
+		poemList = list;
+		listView.setAdapter(new PoemAdapter(MainActivity.this, list));
 	}
 	
 }

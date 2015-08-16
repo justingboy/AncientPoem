@@ -25,7 +25,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * Æô¶¯Ìø×ªActivity
+	 * å¯åŠ¨è·³è½¬Activity
 	 * 
 	 * @param activity
 	 * @param cls
@@ -39,7 +39,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * Æô¶¯Ìø×ªActivity
+	 * å¯åŠ¨è·³è½¬Activity
 	 * 
 	 * @param action
 	 * @param uri
@@ -52,12 +52,12 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 	}
 
 	/**
-	 * Æô¶¯Ìø×ªµ½ÁíÒ»Ó¦ÓÃ³ÌĞòµÄActivity
+	 * å¯åŠ¨è·³è½¬åˆ°å¦ä¸€åº”ç”¨ç¨‹åºçš„Activity
 	 * 
 	 * @param packageName
-	 *            ÁíÒ»¸öÓ¦ÓÃ³ÌĞòµÄ°üÃû
+	 *            å¦ä¸€ä¸ªåº”ç”¨ç¨‹åºçš„åŒ…å
 	 * @param clasActivityName
-	 *            ÒªÆô¶¯ÁíÒ»¸öÓ¦ÓÃ³ÌĞòÖĞµÄActivity
+	 *            è¦å¯åŠ¨å¦ä¸€ä¸ªåº”ç”¨ç¨‹åºä¸­çš„Activity
 	 */
 	protected void startOtherAppActivityForResult(String packageName,
 			String clasActivityName, int requestCode) {
@@ -65,18 +65,18 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 				clasActivityName);
 		Intent intent = new Intent();
 		intent.setComponent(component);
-		// Ìí¼ÓÕâ¸öflag±íÊ¾Æô¶¯µÄActivity·Åµ½ĞÂ´´½¨µÄTaskÖĞ,²»¼ÓÕâÔò·ÅÔÚÒªÆô¶¯Ó¦ÓÃÄ¬ÈÏÈÎÎñÕ»ÖĞ
+		// æ·»åŠ è¿™ä¸ªflagè¡¨ç¤ºå¯åŠ¨çš„Activityæ”¾åˆ°æ–°åˆ›å»ºçš„Taskä¸­,ä¸åŠ è¿™åˆ™æ”¾åœ¨è¦å¯åŠ¨åº”ç”¨é»˜è®¤ä»»åŠ¡æ ˆä¸­
 		// intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		startActivityForResult(intent, requestCode);
 	}
 
-	// ³õÊ¼»¯Êı¾İ
+	// åˆå§‹åŒ–æ•°æ®
 	protected abstract void initView();
 
-	// ³õÊ¼»¯ÊÂ¼ş
+	// åˆå§‹åŒ–äº‹ä»¶
 	protected abstract void initEnvent();
 
-	// ³õÊ¼»¯Êı¾İ
+	// åˆå§‹åŒ–æ•°æ®
 	protected abstract void initData();
 
 	@Override
@@ -95,12 +95,12 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 	}
 
     /**
-     * Ê¹ÓÃBitmapFactory.decodeStream ·½Ê½½âÎöÍ¼Æ¬£¬¼õÉÙÄÚ´æÏûºÄ
-     *  ×¢Òâ£º 
-	 *	decodeStreamÊÇÖ±½Ó¶ÁÈ¡Í¼Æ¬×ÊÁÏµÄ×Ö½ÚÂëÁË£¬ 
-	 *	²»»á¸ù¾İ»úÆ÷µÄ¸÷ÖÖ·Ö±æÂÊÀ´×Ô¶¯ÊÊÓ¦£¬Ê¹ÓÃÁËdecodeStreamÖ®ºó£¬
-	 *	ĞèÒªÔÚhdpiºÍmdpi£¬ldpiÖĞÅäÖÃÏàÓ¦µÄÍ¼Æ¬×ÊÔ´£¬
-	 *	·ñÔòÔÚ²»Í¬·Ö±æÂÊ»úÆ÷ÉÏ¶¼ÊÇÍ¬Ñù´óĞ¡£¨ÏñËØµãÊıÁ¿£©£¬ÏÔÊ¾³öÀ´µÄ´óĞ¡¾Í²»¶ÔÁË¡£
+     * ä½¿ç”¨BitmapFactory.decodeStream æ–¹å¼è§£æå›¾ç‰‡ï¼Œå‡å°‘å†…å­˜æ¶ˆè€—
+     *  æ³¨æ„ï¼š 
+	 *	decodeStreamæ˜¯ç›´æ¥è¯»å–å›¾ç‰‡èµ„æ–™çš„å­—èŠ‚ç äº†ï¼Œ 
+	 *	ä¸ä¼šæ ¹æ®æœºå™¨çš„å„ç§åˆ†è¾¨ç‡æ¥è‡ªåŠ¨é€‚åº”ï¼Œä½¿ç”¨äº†decodeStreamä¹‹åï¼Œ
+	 *	éœ€è¦åœ¨hdpiå’Œmdpiï¼Œldpiä¸­é…ç½®ç›¸åº”çš„å›¾ç‰‡èµ„æºï¼Œ
+	 *	å¦åˆ™åœ¨ä¸åŒåˆ†è¾¨ç‡æœºå™¨ä¸Šéƒ½æ˜¯åŒæ ·å¤§å°ï¼ˆåƒç´ ç‚¹æ•°é‡ï¼‰ï¼Œæ˜¾ç¤ºå‡ºæ¥çš„å¤§å°å°±ä¸å¯¹äº†ã€‚
      * @param resId
      * @return
      */
@@ -110,7 +110,7 @@ public abstract class BaseActivity extends Activity implements OnClickListener {
 		opt.inPreferredConfig = Bitmap.Config.RGB_565;
 		opt.inPurgeable = true;
 		opt.inInputShareable = true;
-		// »ñÈ¡×ÊÔ´Í¼Æ¬
+		// è·å–èµ„æºå›¾ç‰‡
 		InputStream is = getResources().openRawResource(resId);
 		Bitmap bitmap = BitmapFactory.decodeStream(is, null, opt);
 		try {
