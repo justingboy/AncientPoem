@@ -27,7 +27,11 @@ import com.justing.poem.utils.ParseXmlPome;
 import com.justing.poem.utils.ToastUtil;
 import com.slidingmenu.lib.SlidingMenu;
 import com.umeng.update.UmengUpdateAgent;
-
+/**
+ * ¹ÅÊ«´Ê¼øÉÍ
+ * @author sunwenyue
+ *
+ */
 public class MainActivity extends BaseActivity implements PoemFragment.OnTitleChangeListener {
 
 	private ListView listView;
